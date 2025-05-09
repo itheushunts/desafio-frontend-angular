@@ -1,0 +1,22 @@
+<div class="posts">
+    <div class="title">
+        <h1>Exibindo resultado de busca por "Covid 19"</h1>
+        <p>Encontramos um total de 20 resultados para a sua busca</p>
+    </div>
+
+    <div class="grid">
+        @for (item of posts$ | async; track $index) {
+        <div class="card">
+            <img src="{{item.image}}" alt="Covid-19">
+            <div class="card-body">
+                <h2>{{item.title}}</h2>
+                <p>{{item.title}}</p>
+                <a routerLink="/detalhes/{{item.id}}" class="read-more">Ler mais</a>
+            </div>
+        </div>
+        }
+
+
+
+    </div>
+</div>
