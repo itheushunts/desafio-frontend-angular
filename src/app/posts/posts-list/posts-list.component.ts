@@ -16,6 +16,8 @@ export class PostsListComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
   posts$: Observable<Post[]> = inject(HttpClient)
     .get<Post[]>(`${URL_API}/post`)
-    .pipe(switchMap(async (posts) => posts));
+    .pipe(
+      switchMap(async (posts) => posts.filter((post) => post.image !== null))
+    );
   ngOnInit(): void {}
 }

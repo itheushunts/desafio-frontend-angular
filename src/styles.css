@@ -4,6 +4,35 @@
   padding: 0;
 }
 
+.menu {
+  display: flex;
+  gap: 10px;
+}
+
+.button-primary {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-color: #007bff;
+  transition: all 0.3s ease-in-out;
+}
+
+button.button-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -15,16 +44,15 @@ body {
 }
 
 .container {
-  display: flex;
-  width: 1200px;
-  gap: 0px;
+  width: 100%;
+  gap: 16px;
 }
 
 .results {
   display: flex;
   gap: 16px;
-  
-  
+
+
 }
 
 .results h1 {
@@ -43,8 +71,8 @@ body {
   display: flex;
   width: 980px;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* centraliza os cards */
+  gap: 16px;
+  justify-content: center;
 }
 
 .card {
@@ -66,7 +94,21 @@ body {
 .card img {
   border: 0;
   width: 100%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
+.card-text {
+  font-size: 0.9em;
+  margin-bottom: 1.2em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card-body {
@@ -97,9 +139,11 @@ body {
 }
 
 .sidebar {
+  margin-top: 2rem;
+  display: flex;
+  width: 300px;
+  flex-direction: column;
   gap: 10px;
-  padding-top: 90px;
-  flex: 1;
 }
 
 .sidebar .categories h3 {
@@ -109,11 +153,14 @@ body {
 
 .sidebar .categories ul {
   list-style: none;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .sidebar .categories li {
   margin-bottom: 0.7em;
-  border-bottom: 1px solid #ccc; /* linha embaixo */
+  border-bottom: 1px solid #ccc;
+  /* linha embaixo */
   padding: 10px 0;
 }
 
@@ -145,27 +192,45 @@ body {
   border-radius: 4px;
 }
 
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .search-container input {
   flex: 1;
-  padding: 8px 40px 8px 8px; /* espaço pro botão à direita */
-  border: 1px solid #ccc;
+  padding: 8px 40px 8px 8px;
+  border: none;
   border-radius: 4px;
   font-size: 14px;
 }
 
 .search-button {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
   cursor: pointer;
-  padding: 0;
-  color: #666;
+  padding: 8px 12px;
+  border: none;
   font-size: 16px;
 }
 
 .search-button:hover {
   color: #007bff;
+}
+
+.posts {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 16px;
+  justify-content: center
+}
+
+.title {
+  margin-bottom: 2em;
+  margin-top: 2em;
+  text-align: center;
 }

@@ -1,0 +1,7 @@
+@if(error){
+<div class="alert alert-danger" role="alert">
+  @for(item of viewError(); track $index){
+  <span class="alert-message">{{ item }}</span>
+  }
+</div>
+}

@@ -1,22 +1,57 @@
 <div class="posts">
+  <div class="content">
     <div class="title">
-        <h1>Exibindo resultado de busca por "Covid 19"</h1>
-        <p>Encontramos um total de 20 resultados para a sua busca</p>
+      <h3>Exibindo resultado de busca por "Covid 19"</h3>
+      <p>
+        Encontramos um total de {{ (posts$ | async)?.length || 0 }} resultados
+        para a sua busca
+      </p>
     </div>
 
     <div class="grid">
-        @for (item of posts$ | async; track $index) {
-        <div class="card">
-            <img src="{{item.image}}" alt="Covid-19">
-            <div class="card-body">
-                <h2>{{item.title}}</h2>
-                <p>{{item.title}}</p>
-                <a routerLink="/detalhes/{{item.id}}" class="read-more">Ler mais</a>
-            </div>
+      @for (item of posts$ | async; track $index) {
+      <div class="card">
+        <img
+          src="{{ item.image }}"
+          onerror="this.src='https://media.istockphoto.com/id/1409329028/pt/vetorial/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=2048x2048&w=is&k=20&c=99fISV8MCqK-5ZphBqT-W50eTgq5UMBu0vteQ-rE-Do='"
+          alt="{{ item.title }}"
+          class="card-image"
+        />
+        <div class="card-body">
+          <h2 class="card-title">{{ item.title || "N/A" }}</h2>
+          <p class="card-text">{{ item.body || "N/A" }}</p>
+          <a routerLink="/detalhes/{{ item.id }}" class="read-more">Ler mais</a>
         </div>
-        }
-
-
-
+      </div>
+      }
     </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="categories">
+      <h3>Categorias</h3>
+      <ul>
+        @for (item of posts$ | async; track $index) {
+        <li>
+          <a href="#">{{ item.title }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <div class="search-box">
+      <label for="search">Procurando alguma notícia?</label>
+      <div class="search-container">
+        <input
+          type="text"
+          id="search"
+          name="search"
+          placeholder="Pesquisar por..."
+        />
+        <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
 </div>

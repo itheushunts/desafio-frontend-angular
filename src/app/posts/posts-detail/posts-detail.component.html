@@ -1,1 +1,11 @@
-<p>posts-detail works!</p>
+<div class="detail">
+  <img
+    src="{{ (post$ | async)?.image }}"
+    alt="{{ (post$ | async)?.title }}"
+    class="detail-image"
+  />
+  <div class="detail-body">
+    <h2 class="detail-title">{{ (post$ | async)?.title }}</h2>
+    <p class="detail-text">{{ (post$ | async)?.body }}</p>
+  </div>
+</div>
